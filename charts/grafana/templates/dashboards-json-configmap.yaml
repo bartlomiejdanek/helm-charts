@@ -6,10 +6,10 @@ kind: ConfigMap
 metadata:
   name: {{ template "grafana.fullname" $ }}-dashboards-{{ $provider }}
   namespace: {{ template "grafana.namespace" $ }}
-  files: {{ $files }}
   labels:
     {{- include "grafana.labels" $ | nindent 4 }}
     dashboard-provider: {{ $provider }}
+    files: {{ $files }}
 {{- if $dashboards }}
 data:
 {{- $dashboardFound := false }}
